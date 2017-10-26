@@ -10,4 +10,4 @@
 
 > 完善中。。。
 
-![](/E:/MY-GIT/component/compoment/calendar/date.png)
+![](https://raw.githubusercontent.com/hanfengmi/compoment/master/calendar/date.png)
