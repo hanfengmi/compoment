@@ -1,3 +1,11 @@
+.dateInit {
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
 .caBody h1,h2 {
   margin:0;
   padding:0;
@@ -24,6 +32,20 @@
 .ca-title {
   padding-bottom:10px;
   border-bottom:1px solid #e3e3e3;
+  position:relative;
+}
+.ca-title i {
+  position: absolute;
+  font-style: normal;
+  font-size:30px;
+  bottom:30px;
+  cursor: pointer;
+}
+.ca-title .preve {
+  left:0;
+}
+.ca-title .next {
+  right:0;
 }
 .caBody .body-list ul{
   padding: 0;
@@ -34,6 +56,9 @@
 	font-weight:bold;
 	font-size:14px;
 }
+.caBody .calendar-day {
+  border:1px solid transparent;
+}
 .caBody .lightgrey {
   color:#939393;
 }
@@ -41,6 +66,16 @@
   background: #e7f7dc;
   border:1px solid #6abc3d;
   color:#6abc3d;
+}
+.caBody .mouse-day {
+  /*background: gray;*/
+  border:1px solid gray;
+  /*color:#6abc3d;*/
+}
+.caBody .select-day {
+  /*background: gray;*/
+  border:1px solid #6abc3d;
+  /*color:#6abc3d;*/
 }
 .caBody .body-list ul li {
   width:14.28%;

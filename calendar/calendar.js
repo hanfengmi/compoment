@@ -4,9 +4,13 @@ var calendar = {
     month_normal : [31,28,31,30,31,30,31,31,30,31,30,31],
   },
   ele:null,
+  singleMonth:'',
   init:function(obj){//
     this.ele = obj.ele;
     this.more(obj)
+    if(obj.single){
+      this.singleMonth = obj.time[0]
+    }
   },
   dayStart:function(year,month){//月份加1，获取某月第一天是几号
     var tempDate = new Date(year,month,1)
@@ -27,14 +31,17 @@ var calendar = {
       return '0'+num;
     }
   },
-  refreshDate:function(date){
+  refreshDate:function(date, single){
     var start = parseInt(date.split('-')[1]);
-    console.log(start)
-
+    // console.log(start)
+    if(single){
+      $('.dateInit').html('');
+    }
     var body = $('<DIV class="caBody">')
+
     var title = $('<DIV class="ca-title">')
     var dateB = $('<DIV class="ca-date">')
-    title.html('<h1 id="ca-month-'+start+'">随机月</h1><h2 id="ca-year-'+start+'">随机年</h2>')
+    title.html('<h1 id="ca-month-'+start+'">随机月</h1><h2 id="ca-year-'+start+'">随机年</h2>'+(single?'<i class="preve"><</i><i class="next">></i>':''))
     dateB.html('<div class="lightgrey body-list"><ul class="clearfix"><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li><li>日</li></ul></div><div class="darkgrey body-list"><ul id="ca-days-'+start+'" class="clearfix"></ul></div>')
 
     body.append(title)
@@ -83,11 +90,71 @@ var calendar = {
   },
   more:function(obj){
     var that = this;
-    obj.time.forEach(function(e,i){
-      that.refreshDate(e);
-    })
+    if(obj.single){
+      that.refreshDate(obj.time[0], obj.single);
+    }else{
+      obj.time.forEach(function(e,i){
+        that.refreshDate(e);
+      })
+    }
+    this.moseover();
+    this.click();
+    this.changeDate();
   },
   moseover:function(){
-    
+    $('.dateInit').on('mouseenter','.calendar-day',function(){
+      $(this).addClass('mouse-day')
+    })
+    $('.dateInit').on('mouseleave','.calendar-day',function(){
+      $(this).removeClass('mouse-day')
+    })
+  },
+  click:function(){
+    $('.dateInit').on('click','.calendar-day',function(){
+      if($(this).hasClass('select-day')){
+        $(this).removeClass('select-day')
+      }else{
+        $('.calendar-day').removeClass('select-day')
+        $(this).addClass('select-day')
+      }
+    })
+  },
+  changeDate:function(){
+    var that = this;
+    $('.dateInit').on('click','.ca-title .next',function(){
+      var time = that.singleMonth;
+      //
+      that.singleMonth = that.someFunction.takeMonth(time, true)
+      that.refreshDate(that.singleMonth, true)
+      console.log('xxxxxxxxxxxxxxxx',that.singleMonth);
+    })
+    $('.dateInit').on('click','.ca-title .preve',function(){
+      var time = that.singleMonth;
+      // that.refreshDate('2017-11', true)
+      that.singleMonth = that.someFunction.takeMonth(time)
+      that.refreshDate(that.singleMonth, true)
+      console.log('ssssssssssssss', that.singleMonth)
+    })
+  },
+  someFunction:{//need function
+    takeMonth:function(str,next){
+      var now = new Date(str);
+      var newDate = null;
+      if(next) {
+        if(now.getMonth()+2 > 12){
+          newDate = (now.getFullYear()+1) + '-01'
+        }else {
+          newDate = now.getFullYear() +'-'+ (now.getMonth()+2)
+        }
+      }else {
+        if(now.getMonth()-1 <= 0){
+          newDate = (now.getFullYear()-1) + '-12'
+        }else {
+          newDate = now.getFullYear() +"-"+ (now.getMonth())
+        }
+      }
+      // console.log(newDate)
+      return newDate;
+    }
   }
 }
