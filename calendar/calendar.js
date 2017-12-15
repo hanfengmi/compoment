@@ -153,7 +153,6 @@ var calendar = {
           newDate = now.getFullYear() +"-"+ (now.getMonth())
         }
       }
-      // console.log(newDate)
       return newDate;
     }
   }
