@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>组件</title>
     <link rel="stylesheet" href="./calendar/calendar.css">
+    <link rel="stylesheet" href="./hashMove/hash.css">
     <style media="screen">
       .clearfix::after {
         clear:both;
@@ -16,20 +17,55 @@
       .dateInit {
         width:100%;
       }
+      .content {
+        width:100%;
+        height:400px;
+        background: red;
+      }
+      .content2 {
+        height:800px;
+        background: yellow;
+      }
+      .content3 {
+        height:200px;
+        background: blue;
+      }
+      .content4 {
+        height:500px;
+        background: brown;
+      }
+      .content5 {
+        height:1500px;
+        background: #000;
+      }
     </style>
   </head>
   <body>
       <div class="dateInit clearfix">
 
       </div>
+      <div id="hash-move">
+
+      </div>
+      <div id="ele1" class="content"></div>
+      <div id="ele2" class="content content2"></div>
+      <div id="ele3" class="content content3"></div>
+      <div id="ele4" class="content content4"></div>
+      <div id="ele5" class="content content5"></div>
   </body>
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="./calendar/calendar.js"></script>
+  <script src="./hashMove/hash.js" charset="utf-8"></script>
   <script type="text/javascript">
       calendar.init({
         ele: $('.dateInit'),
-        single: true,
-        time: ['2017-1','2017-2','2017-3']
+        single: false,
+        time: ['2017-10','2017-11','2017-12']
+      })
+      hashMove.init({
+        ele: '#hash-move',
+        a: ['第一个','第二个','第三个','第四个','第五个'],
+        div: '.content',
       })
   </script>
 </html>

@@ -1,0 +1,31 @@
+#hash-move {
+ position:relative;
+}
+#hash-move a{
+  text-decoration: none;
+  color:#000;
+  display: inline-block;
+  padding:0 5px;
+  margin:5px 5px 5px 0;
+  border:1px solid #000;
+}
+#hash-move .toTop {
+  position:fixed;
+  width:40px;
+  height:40px;
+  background: rgba(0,0,0,.4);
+  border:1px solid #c1c1c1;
+  bottom:50px;
+  right:50px;
+  cursor:pointer;
+  display: none;
+}
+.toTop::after{
+  content:'↑';
+  color:#fff;
+  width:100%;
+  font-size:30px;
+  margin-left:12px;
+  /* text-align: center; */
+  line-height:40px;
+}
