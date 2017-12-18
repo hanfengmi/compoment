@@ -11,4 +11,17 @@
 
 > 完善中。。。
 
+
+
+
+### hashMove 锚点滚动切换
+> 依赖Jquery
+
+```
+hashMove.init({
+  ele: '#hash-move',//父级
+  a: ['第一个','第二个','第三个','第四个','第五个'],//a标签内容
+  div: '.content',//需要跳转的div
+})
+```
 ![](https://raw.githubusercontent.com/hanfengmi/compoment/master/calendar/date.png)

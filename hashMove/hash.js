@@ -36,9 +36,11 @@ var hashMove = {
   animateMove:function(scrollTop, eleTop, toTop){
     var that = this;
     if(toTop){
-      var nowNum = scrollTop - 50;
+      var nowNum = scrollTop - 100;
       if(nowNum <= 0){
         nowNum = 0;
+        console.log(12314214);
+        console.log(window.location.href.split('#')[0])
       }
        window.requestAnimationFrame(function(){
          document.body.scollTop = nowNum;
@@ -46,12 +48,13 @@ var hashMove = {
          if(nowNum == eleTop){
            return
          }
-         that.animateMove(nowNum, eleTop)
+         that.animateMove(nowNum, 0, true)
        })
     }else{
       var nowNum = scrollTop + 50;
       if(nowNum >= eleTop){
         nowNum = eleTop;
+
       }
        window.requestAnimationFrame(function(){
          document.body.scollTop = nowNum;
@@ -73,7 +76,7 @@ var hashMove = {
       }
     })
     $('.toTop').on('click',function(){
-      that.animateMove(document.body.scrollTop, 0, true);
+      that.animateMove(document.documentElement.scrollTop, 0, true);
       // document.documentElement.scrollTop = 0;
       // console.log(document.documentElement.scrollTop)
       // window.requestAnimationFrame(function(){
